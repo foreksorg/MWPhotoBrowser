@@ -234,6 +234,7 @@
             // Ensure we don't zoom in or out too far, just in case
             zoomScale = MIN(MAX(self.minimumZoomScale, zoomScale), self.maximumZoomScale);
         }
+        zoomScale =  MIN(xScale, yScale);
     }
     return zoomScale;
 }
@@ -287,6 +288,8 @@
                                          (imageSize.height * self.zoomScale - boundsSize.height) / 2.0);
 
     }
+
+    self.contentOffset = CGPointMake(0,0);
     
     // Disable scrolling initially until the first pinch to fix issues with swiping on an initally zoomed in photo
     self.scrollEnabled = NO;
